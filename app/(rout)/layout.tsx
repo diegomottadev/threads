@@ -31,8 +31,8 @@ export default function RootLayout({
       <html lang='en'>
         <body className={inter.className}>
           <Topbar />
-
-          <main className='flex flex-row'>
+          
+          <main className='flex flex-row'> {/* this class css allow rigthsidebar appear in the section rigth*/}
             <LeftSidebar />
             <section className='main-container'>
               <div className='w-full max-w-4xl'>{children}</div>
