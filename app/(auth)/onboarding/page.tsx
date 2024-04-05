@@ -4,20 +4,31 @@ import { currentUser } from '@clerk/nextjs';
 async function Page() {
     let user = null;
 
-        user = await currentUser();
-        console.log(user)
+    user = await currentUser();
 
 
     const userInfo = {}; // Assuming userInfo should be fetched from some source, adjust as needed
 
+    // const userData = {
+    //     id: user?.id || "",
+    //     objectId: userInfo?._id || "",
+    //     username: userInfo ? userInfo.username :
+    //     name: userInfo ? userInfo.name : user?.firstName ?? "",
+    //     bio: userInfo ? userInfo.bio : "",
+    //     image: userInfo ? userInfo.image : user?.imageUrl || "",
+    // };
+
+
     const userData = {
-        id: user?.id || "",
-        objectId: userInfo?._id || "",
-        username: userInfo ? userInfo.username : user?.username || "",
-        name: userInfo ? userInfo.name : user?.firstName ?? "",
-        bio: userInfo ? userInfo.bio : "",
-        image: userInfo ? userInfo.image : user?.imageUrl || "",
+        id: user.id,
+        objectId: userInfo?._id,
+        username: user.username,
+        name: user.firstName ?? "",
+        bio: userInfo ? userInfo?.bio : "",
+        image:  user.imageUrl,
     };
+
+
 
     return (
         <main className="mx-auto flex max-w-3x1 flex-col justify-start px-10 py-20">
